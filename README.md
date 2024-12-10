@@ -4,4 +4,5 @@ This is the new app regulator for blocking any executables you want. Run it once
 
 I'll try my best to add the following features under my knowledge
 > Camouflage [Hides the window while asking for admin and launches another app like Notepad to avoid suspicion]
+
 > Profiles [Save, Save As, Load]
