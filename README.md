@@ -6,3 +6,18 @@ I'll try my best to add the following features under my knowledge
 > Camouflage [Hides the window while asking for admin and launches another app like Notepad to avoid suspicion]
 
 > Profiles [Save, Save As, Load]
+
+
+---------------------------------------------------------------------
+# NOTE
+
+> I've added both Camouflage & Profiles Feature to my app on the same day. It was hella hard & I might've made like 30 executables to come this far
+
+> However, only "Profiles" feature works on this script because an executable is required for the "Camouflage" technique to run
+
+> Hence, if you want full experience, go for the Executable Version
+
+> However, you can see the code which I commented designed for executable version on this script.
+
+> Thank You. Any issues later on will be fixed once discovered.
+
