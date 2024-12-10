@@ -17,7 +17,7 @@ I'll try my best to add the following features under my knowledge
 
 > Hence, if you want the full experience, go for the Executable Version
 
-> However, you can see the code which I designed for the executable version, I've commented it on this script.
+> However, you can see the code which I designed for the executable version which I've commented on this script.
 
 > Thank You. Any issues later on will be fixed once discovered.
 
