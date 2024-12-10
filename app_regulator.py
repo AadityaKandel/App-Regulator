@@ -37,6 +37,7 @@ admin_info = '''
 This feature is only available for an executable version of this app\n
 But you can use this feature by manually launching this script as admin from cmd
 '''
+abort = False
 
 # Setting Variables
 toggle_button2.set(1)
@@ -55,7 +56,6 @@ def allow_admin(destination):
             ['powershell', '-Command', f'Start-Process "{destination}" -Verb RunAs'],
             check=True
         )
-        tmsg.showinfo('Info', 'Success. Please wait while the app is relaunching....')
         sys.exit()
     except subprocess.CalledProcessError:
         tmsg.showerror('Error', 'Admin Access Not Given')
@@ -93,6 +93,7 @@ def taskkill(app_name, force=False):
     check = subprocess.run(command)
 
 def check_time(target_time):
+    global abort
     f=False
     if toggle_button5.get() == 1:
         f=True
@@ -101,8 +102,12 @@ def check_time(target_time):
     if now >= target_time:
         for x in target_name:
             taskkill(x, force=f)
+        stop_attack()
     else:
-        root.after(100, check_time, target_time)
+        if abort:
+            return
+        else:
+            root.after(100, check_time, target_time)
 
 
 def spacing(frame_or_root):
@@ -222,7 +227,7 @@ def hide_window():
         toggle_button4.set(0)
 
 def launch_taskkill():
-    global loop,toggle_button3, minutes, target_name
+    global loop,toggle_button3, minutes, target_name, abort
     loop = True
     f=False
 
@@ -239,6 +244,10 @@ def launch_taskkill():
                 while (True):
                     now = datetime.now()
 
+                    if abort:
+                        loop+=1
+                        break
+
                     if now >= target_time:
                         for x in target_name:
                             taskkill(x, force=f)
@@ -251,14 +260,35 @@ def launch_taskkill():
             for x in target_name:
                 taskkill(x, force=f)
 
+def disable_everything():
+    for items in all_features:
+        if items['state'] == DISABLED:
+            pass
+        else:
+            items.config(state=DISABLED)
+
+def enable_everything():
+    global toggle_button2
+    for items in all_features:
+        items.config(state=NORMAL)
+
+    choice.config(state='readonly')
+
+    if toggle_button2.get() == 1: # Both are special cases hence cannot be iterated
+        en1.config(state=DISABLED)
+        choice.config(state=DISABLED)
 
 def initiate_taskkill():
-    global target_name, minutes
+
+    global target_name, minutes, abort
+
+    abort=False
 
     if len(target_name) == 0:
         tmsg.showerror('Error','Failure to Launch Attack! No Target Selected!')
     else:
         btn_main.config(text="Stop Attack", bg="green", command=stop_attack)
+        disable_everything()
 
         if toggle_button3.get()==1:
             if options[1] == dropdown.get():
@@ -270,7 +300,9 @@ def initiate_taskkill():
         t1.start()
 
 def stop_attack():
-    global loop
+    enable_everything()
+    global loop, abort
+    abort=True
     loop=False
     btn_main.config(text="Activate Taskkill", bg="red", fg="black",command=initiate_taskkill)
 
@@ -426,6 +458,8 @@ btn_main = Button(text="Activate Taskkill",
     command=initiate_taskkill)
 
 btn_main.pack()
+
+all_features = [btn1, btn2, ch1, ch2, ch3, en1, choice, ch4, ch5]
 
 check_admin()
 root.mainloop()
