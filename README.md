@@ -9,7 +9,7 @@ I'll try my best to add the following features under my knowledge
 
 
 ---------------------------------------------------------------------
-# NOTE
+# UPDATE V2
 
 > I've added both Camouflage & Profiles Feature to my app on the same day. It was hella hard & I might've made like 30 executables to come this far
 
@@ -19,5 +19,11 @@ I'll try my best to add the following features under my knowledge
 
 > However, you can see the code which I designed for the executable version which I've commented on this script.
 
-> Thank You. Any issues later on will be fixed once discovered.
+# UPDATE V3
+
+> I've solved some issues and added an extra feature
+
+> Now, the profile you save will be encrypted everytime, leading to more security
+
+> If the file is modified in some way, it won't be accepted
 
