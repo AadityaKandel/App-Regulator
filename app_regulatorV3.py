@@ -47,6 +47,7 @@ already_saved = False
 file_path=None
 auto_load_file=False
 nothing_changed=True
+cama_demo=''
 camouflage_manual = '''
 The Camouflage Technique
 It allows the user to make an illusion of running a different app as an administrator but in reality, this app is being ran as admin allowing it higher authorities.
@@ -88,8 +89,7 @@ www.github.com/AadityaKandel
 '''
 
 # Enc & Dec Variables
-
-encryption_key=b'X7Z0k2aY5FqznQUMGDfLnFzCzyTqxJbWuJAUBKyoPNs='
+encryption_key = b'X7Z0k2aY5FqznQUMGDfLnFzCzyTqxJbWuJAUBKyoPNs='
 enc = Fernet(encryption_key)
 
 # Setting Variables
@@ -125,7 +125,7 @@ except:
 
 # Defining Functions
 def allow_admin(destination):
-    global camouflage_app_name
+    global camouflage_app_name,cama_demo
     try:
         subprocess.run(
             ['powershell', '-Command', f'Start-Process "{destination}" -Verb RunAs'],
@@ -138,6 +138,8 @@ def allow_admin(destination):
 
         sys.exit()
     except subprocess.CalledProcessError:
+        temporary_loop()
+        os.rename(cama_demo, "app_regulator.exe")
         tmsg.showerror('Error', 'Admin Access Not Given')
         toggle_button1.set(0)
     finally:
@@ -541,7 +543,10 @@ def savepath():
 
 def camouflage():
     tmsg.showinfo('Info','This Feature Only Works On The Executable Version Of This File')
-    # global camouflage_app_name
+    # global camouflage_app_name,cama_demo
+    # if os.path.exists("0000.txt"):
+    #     os.remove("0000.txt")
+
     # tmsg.showinfo('Info',camouflage_text)
     # try:
     #     camouflage_app = filedialog.askopenfile(mode='r', 
@@ -561,6 +566,7 @@ def camouflage():
 
     # f = open('demo.json','w', encoding="utf-8")
     # f.write(cama_app)
+    # cama_demo=cama_app
     # f.close()
 
     # os.rename('app_regulator.exe',cama_app)
