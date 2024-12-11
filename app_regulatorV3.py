@@ -138,8 +138,11 @@ def allow_admin(destination):
 
         sys.exit()
     except subprocess.CalledProcessError:
-        temporary_loop()
-        os.rename(cama_demo, "app_regulator.exe")
+        try:
+            os.rename(cama_demo, "app_regulator.exe")
+            temporary_loop()
+        except:
+            pass
         tmsg.showerror('Error', 'Admin Access Not Given')
         toggle_button1.set(0)
     finally:
