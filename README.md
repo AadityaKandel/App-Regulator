@@ -15,7 +15,7 @@ I'll try my best to add the following features under my knowledge
 
 > However, only "Profiles" feature works on this script because an executable is required for the "Camouflage" technique to work
 
-> Hence, if you want the full experience, go for the Executable Version
+> Hence, if you want the full experience, go for the Executable Version: https://github.com/AadityaKandel/App-Regulator-Executable
 
 > However, you can see the code which I designed for the executable version which I've commented on this script.
 
