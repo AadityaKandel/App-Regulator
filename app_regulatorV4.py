@@ -273,7 +273,8 @@ def initiate_scan():
     t2.start()
 
 def add_scanned_targets():
-    global formatted_apps,target_name
+    global formatted_apps,target_name,nothing_changed
+    nothing_changed=False
     selected_targets = l2.curselection()
 
     if selected_targets == ():
