@@ -232,7 +232,7 @@ def scan_apps():
         tmsg.showerror('Error','Failed to scan apps. Issue Mostly Arised Because of No Admin Authority')
         btn3.config(text="Re-Scan Apps",bg="black",fg="white",state=NORMAL)
         return
-
+    l2.delete(0,END) # Small Mistake Yet Big Price to Pay [Forgot to initialize the listbox]
     for i in range(len(formatted_apps)):
         l2.insert(i,f"{formatted_apps[i][0]}")
 
