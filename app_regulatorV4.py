@@ -758,6 +758,12 @@ def autosave():
         pass
     sys.exit()
 
+def hover_effect(button):
+    button.config(bg="#808080", fg="#ffffff")
+
+def leave_effect(button):
+    button.config(bg="black", fg="white")
+
 # Creating Menus
 menubar = Menu(root)
 
@@ -977,7 +983,13 @@ btn_main = Button(text="Block",
 
 btn_main.pack()
 
-all_features = [btn1, btn2, ch2, ch3, en1, choice, ch4, ch5]
+all_features = [btn1, btn2, btn3, btn4, ch2, ch3, en1, choice, ch4, ch5]
+btn_to_bind = [btn1,btn2,btn3,btn4]
+
+# Binding All Buttons For A Hover & Leave Effect
+for x in btn_to_bind:
+    x.bind("<Enter>",lambda event, button=x: hover_effect(button))
+    x.bind("<Leave>",lambda event, button=x: leave_effect(button))
 
 # Smth that cannot be appended above
 
